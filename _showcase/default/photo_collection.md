@@ -11,7 +11,7 @@ images:
 - src: https://tc-new.z.wiki/autoupload/f/SkQl7dmucSnjdM43IVHQjk55e5wlIo9B4YKRJxtXdQayl5f0KlZfm6UsKj-HyTuv/20251007/UUVr/1080X1430/col2.jpg/webp
   title: Blooming cherry blossoms at Wuhan University
   # desc: Description 2
-- src: https://picsum.photos/seed/third33/800/800
+# - src: https://picsum.photos/seed/third33/800/800
 ---
 
 {% include widgets/carousel.html id=page.id images=page.images height=page.height %}
