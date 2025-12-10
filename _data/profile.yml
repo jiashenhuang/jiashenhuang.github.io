@@ -1,6 +1,6 @@
-primary_name: "Jiashen Huang"
+primary_name: "Jiashen (Jessiya) Huang"
 secondary_name: "黄嘉申"
-navbar_name: "Jiashen Huang"
+navbar_name: "Jiashen (Jessiya) Huang"
 
 positions:
 - logo: /assets/images/badges/NTU_Logo.png  # Logo is optional
@@ -8,7 +8,7 @@ positions:
 # - name: Position 2 without logo
 
 
-email: "jiashenhuang@outlook.com"
+email: "jiashenhuang@whu.edu.cn"
 cv_link: https://github.com/jiashenhuang/jiashenhuang.github.io/blob/main/assets/Resume.pdf
 gscholar: ouHhYd8AAAAJ
 # github: your_github_id
