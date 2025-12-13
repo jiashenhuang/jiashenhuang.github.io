@@ -5,7 +5,8 @@ navbar_name: "Jiashen (Jessiya) Huang"
 positions:
 - logo: /assets/images/badges/NTU_Logo.png  # Logo is optional
   name: Research Assistant at Nanyang Technological University (NTU)
-# - name: Position 2 without logo
+- logo: /assets/images/badges/WHU_Logo.png
+  name: M.A. in Journalism and Communication, Wuhan University
 
 
 email: "jiashenhuang@whu.edu.cn"
@@ -33,7 +34,7 @@ short_bio: >-
     My professional experiences at <a href="https://www.cctv.com/gyys/">China Media Group</a>, 
     <a href="https://www.meituan.com/en-US/about-us">Meituan</a>, 
     and <a href="https://en.bluefocus.com/">Blue Focus Digital</a> have provided practical skills in research and data analysis. 
-    I am seeking PhD opportunities to advance research on <em>AI-driven communication</em> and its societal impact, 
+    I am seeking Ph.D. opportunities to advance research on <em>AI-driven communication</em> and its societal impact, 
     and I welcome collaboration and discussion in this field. 
   </p>
 
