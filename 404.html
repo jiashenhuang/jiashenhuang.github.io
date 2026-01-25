@@ -2,6 +2,50 @@
 layout: prompt
 title: 404 - Page Not Found
 ---
-<h1 class="mt-5">404</h1>
-<p class="lead">The requested page could not be found.</p>
-<p><a href="{{ '/' | relative_url }}">Go home</a></p>
+<style>
+  .btn-cat {
+    --cat-bg-start: #ffd6e7;
+    --cat-bg-end: #ffeef6;
+    --cat-text: #4a2c2a;
+    background: linear-gradient(135deg, var(--cat-bg-start), var(--cat-bg-end));
+    color: var(--cat-text);
+    border: 1px solid #ffc2da;
+    border-radius: 9999px;
+    padding: .6rem 1.1rem;
+    box-shadow: 0 2px 6px rgba(255, 180, 200, 0.5);
+    transition: transform .1s ease, box-shadow .2s ease;
+  }
+  .btn-cat:hover { transform: translateY(-1px); box-shadow: 0 6px 12px rgba(255, 180, 200, 0.6); }
+  .actions-cat { gap: 1rem !important; }
+  .input-group { gap: .75rem; }
+  .form-control.cat-rounded { border-radius: 9999px; }
+  .ascii-cat { color: #ff7fb7; }
+</style>
+<section class="min-vh-100 d-flex align-items-center">
+  <div class="container-fluid text-center px-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-9 col-xl-8 mx-auto">
+        <h1 class="display-1 fw-bold">404</h1>
+        <pre class="my-3 d-inline-block text-left ascii-cat" aria-hidden="true" style="font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; line-height: 1.15; font-size: 1.25rem; background: transparent; border: 0;">
+ /\_/\ 
+( o.o )  Meow! Page not found.
+ > ^ <
+        </pre>
+        <p class="lead text-muted">This page wandered off chasing a laser pointer.</p>
+        <div class="d-grid d-sm-flex justify-content-center mt-3 actions-cat">
+          <a href="{{ '/' | relative_url }}" class="btn btn-cat btn-lg">🐾 Home</a>
+          <button class="btn btn-cat btn-lg" type="button" onclick="history.back()">🐾 Back</button>
+        </div>
+        <form class="mt-4" action="https://duckduckgo.com/" method="get" onsubmit="this.q.value = 'site:' + ( '{{ site.url | default: site.github.url }}'.replace(/^https?:\/\//,'') ) + ' ' + this.q.value;">
+          <div class="mx-auto" style="max-width: 560px;">
+            <div class="input-group input-group-lg">
+              <input type="text" name="q" class="form-control cat-rounded" placeholder="Search this site" aria-label="Search this site">
+              <button class="btn btn-cat" type="submit">🐾 Search</button>
+            </div>
+          </div>
+        </form>
+        <p class="mt-3 small text-muted">Or try again later.</p>
+      </div>
+    </div>
+  </div>
+</section>
