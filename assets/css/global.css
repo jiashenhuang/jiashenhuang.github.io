@@ -1,17 +1,28 @@
 @charset "utf-8";
 body {
-    font-family: "Lato", sans-serif;
+    font-family: "Lato", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-weight: 400;
     padding-top: 5.0rem;
+    color: #333;
+    line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #1a1a1a;
 }
 
 .card {
-    border-radius: 0.8rem!important;
+    border-radius: 1rem!important;
+    border: none !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.card:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08) !important;
 }
 
 .card-img-overlay {
@@ -34,7 +45,9 @@ h1, h2, h3, h4, h5, h6,
 
 
 .text-profile-position {
-    font-weight: 400;
+    font-weight: 500;
+    color: #495057;
+    font-size: 1.1rem;
 }
 
 .text-profile-bio {
@@ -43,7 +56,25 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .navbar {
-    opacity: 0.95;
+    background-color: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #007bff !important;
 }
 
 .inline-badge {
@@ -88,5 +119,71 @@ div.lazy {
 
 .email-text {
     font-family: Courier, monospace;
+}
+
+/* Premium Publication Item Styles */
+.pub-item-row {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 0.8rem;
+}
+
+.pub-item-row:hover {
+    background-color: rgba(0,0,0,0.01);
+}
+
+.pub-title {
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.4rem;
+}
+
+.pub-venue {
+    font-weight: 600;
+    font-style: italic;
+    color: #495057;
+}
+
+.pub-year-badge {
+    display: inline-block;
+    padding: 0.1rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 4px;
+    background-color: #f1f3f5;
+    color: #495057;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.abstract-links a {
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 0.8rem;
+    transition: all 0.2s ease;
+    background-color: #f8f9fa;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    color: #495057 !important;
+    font-size: 0.8rem;
+    display: inline-block;
+    border: 1px solid transparent;
+}
+
+.abstract-links a:hover {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+    color: #007bff !important;
+}
+
+.profile-portrait {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.profile-portrait:hover {
+    transform: scale(1.02);
 }
 
