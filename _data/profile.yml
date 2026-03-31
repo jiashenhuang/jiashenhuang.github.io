@@ -3,8 +3,8 @@ secondary_name: "黄嘉申"
 navbar_name: "Jiashen (Jessiya) Huang"
 
 positions:
-- logo: /assets/images/badges/NTU_Logo.png  # Logo is optional
-  name: Research Assistant at Nanyang Technological University (NTU)
+# - logo: /assets/images/badges/NTU_Logo.png  # Logo is optional
+#   name: Research Assistant at Nanyang Technological University (NTU)
 - logo: /assets/images/badges/WHU_Logo.png
   name: M.A. in Journalism and Communication, Wuhan University
 
