@@ -32,6 +32,7 @@ short_bio: >-
   </p>
   <p> 
     I hold both a Bachelor’s and a Master of Arts degree from the <a href="https://journal.whu.edu.cn/">School of Journalism and Communication</a> at <a href="https://en.whu.edu.cn/">Wuhan University</a>. 
+    Previously, I have worked as a remote Research Assistant at <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a> and <a href="https://www.ntu.edu.sg/">Nanyang Technological University</a>.
     My professional experiences at <a href="https://www.cctv.com/gyys/">China Media Group</a>, 
     <a href="https://www.meituan.com/en-US/about-us">Meituan</a>, 
     and <a href="https://en.bluefocus.com/">Blue Focus Digital</a> have provided practical skills in research and data analysis. 
@@ -58,18 +59,18 @@ education:
   date: Sep 2019 - Jul 2023
 
 experience:
-- name: Nanyang Technological University
-  logo: /assets/images/badges/NTU_Logo.png
-  position: >-
-    Research Assistant <br/>
-    Wee Kim Wee School of Communication and Information (WKWSCI)
-  date: Aug 2025 - Oct 2025
 - name: Tsinghua University
   logo: /assets/images/badges/THU_Logo.png
   position: >-
     Research Assistant <br/>
     School of Journalism and Communication
-  date: Jul 2025 - Aug 2025
+  date: Jul 2025 - Jan 2026
+- name: Nanyang Technological University
+  logo: /assets/images/badges/NTU_Logo.png
+  position: >-
+    Research Assistant <br/>
+    Wee Kim Wee School of Communication and Information
+  date: Aug 2025 - Oct 2025
 - name: China Central Television
   logo: /assets/images/badges/CCTV_Logo.jpeg
   position: >-
