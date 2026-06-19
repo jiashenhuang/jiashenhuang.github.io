@@ -3,48 +3,196 @@ layout: prompt
 title: 404 - Page Not Found
 ---
 <style>
-  .btn-cat {
-    --cat-bg-start: #ffd6e7;
-    --cat-bg-end: #ffeef6;
-    --cat-text: #4a2c2a;
-    background: linear-gradient(135deg, var(--cat-bg-start), var(--cat-bg-end));
-    color: var(--cat-text);
-    border: 1px solid #ffc2da;
-    border-radius: 9999px;
-    padding: .6rem 1.1rem;
-    box-shadow: 0 2px 6px rgba(255, 180, 200, 0.5);
-    transition: transform .1s ease, box-shadow .2s ease;
+  :root {
+    --cat-bg: #fff8fb;
+    --cat-bg-2: #fff1f7;
+    --cat-card: rgba(255, 255, 255, 0.82);
+    --cat-border: rgba(255, 179, 214, 0.45);
+    --cat-shadow: 0 22px 60px rgba(255, 167, 201, 0.18);
+    --cat-text: #4a2c3d;
+    --cat-muted: #8b6a7b;
+    --cat-accent: #ff7fb7;
+    --cat-accent-2: #ffc1de;
   }
-  .btn-cat:hover { transform: translateY(-1px); box-shadow: 0 6px 12px rgba(255, 180, 200, 0.6); }
-  .actions-cat { gap: 1rem !important; }
-  .input-group { gap: .75rem; }
-  .form-control.cat-rounded { border-radius: 9999px; }
-  .ascii-cat { color: #ff7fb7; }
+
+  body {
+    background:
+      radial-gradient(circle at top left, rgba(255, 192, 203, 0.55), transparent 34%),
+      radial-gradient(circle at top right, rgba(255, 220, 238, 0.75), transparent 30%),
+      linear-gradient(180deg, var(--cat-bg), var(--cat-bg-2));
+    background-attachment: fixed;
+  }
+
+  .notfound-shell {
+    min-height: calc(100vh - 5rem);
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+  }
+
+  .notfound-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--cat-card);
+    border: 1px solid var(--cat-border);
+    border-radius: 2rem;
+    box-shadow: var(--cat-shadow);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: clamp(1.5rem, 4vw, 3rem);
+    width: min(100%, 960px);
+    margin: 0 auto;
+  }
+
+  .notfound-card::before,
+  .notfound-card::after {
+    content: "";
+    position: absolute;
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 191, 221, 0.42), rgba(255, 191, 221, 0));
+    z-index: 0;
+  }
+
+  .notfound-card::before { top: -7rem; right: -5rem; }
+  .notfound-card::after { bottom: -8rem; left: -6rem; }
+
+  .notfound-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .45rem .9rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 179, 214, 0.45);
+    color: var(--cat-muted);
+    font-size: .92rem;
+    font-weight: 700;
+    letter-spacing: .01em;
+  }
+
+  .hero-404 {
+    font-size: clamp(4rem, 14vw, 8rem);
+    line-height: 0.95;
+    color: var(--cat-accent);
+    text-shadow: 0 12px 24px rgba(255, 127, 183, 0.18);
+    margin: .25rem 0 0;
+  }
+
+  .subtitle {
+    color: var(--cat-muted);
+    font-size: 1.08rem;
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cat-illustration {
+    display: inline-block;
+    padding: 1rem 1.3rem;
+    border-radius: 1.5rem;
+    background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,247,251,.85));
+    border: 1px solid rgba(255, 191, 221, 0.55);
+    box-shadow: 0 12px 30px rgba(255, 167, 201, 0.12);
+    color: #ff76b1;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    line-height: 1.15;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin: 1rem 0 1.5rem;
+  }
+
+  .btn-cat {
+    --cat-btn-bg: linear-gradient(135deg, #ff9ac6, #ffd1e7);
+    --cat-btn-text: #5b2a46;
+    border: 1px solid rgba(255, 160, 201, 0.8);
+    border-radius: 999px;
+    background: var(--cat-btn-bg);
+    color: var(--cat-btn-text);
+    padding: .75rem 1.25rem;
+    font-weight: 800;
+    box-shadow: 0 12px 24px rgba(255, 153, 195, 0.22);
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  }
+
+  .btn-cat:hover,
+  .btn-cat:focus {
+    color: var(--cat-btn-text);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 28px rgba(255, 153, 195, 0.28);
+    filter: saturate(1.05);
+  }
+
+  .btn-cat-secondary {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .search-box {
+    max-width: 44rem;
+    margin: 0 auto;
+  }
+
+  .search-box .form-control {
+    border-radius: 999px 0 0 999px;
+    border: 1px solid rgba(255, 179, 214, 0.6);
+    background: rgba(255, 255, 255, 0.92);
+    padding-left: 1.1rem;
+    height: calc(1.5em + 1.15rem + 2px);
+  }
+
+  .search-box .form-control:focus {
+    border-color: rgba(255, 127, 183, 0.85);
+    box-shadow: 0 0 0 0.2rem rgba(255, 191, 221, 0.35);
+  }
+
+  .search-box .btn {
+    border-radius: 0 999px 999px 0;
+  }
+
+  @media (max-width: 767.98px) {
+    body {
+      background-attachment: scroll;
+    }
+  }
 </style>
-<section class="min-vh-100 d-flex align-items-center">
-  <div class="container-fluid text-center px-3">
+<section class="notfound-shell">
+  <div class="container-fluid px-3">
     <div class="row justify-content-center">
-      <div class="col-12 col-md-10 col-lg-9 col-xl-8 mx-auto">
-        <h1 class="display-1 fw-bold">404</h1>
-        <pre class="my-3 d-inline-block text-left ascii-cat" aria-hidden="true" style="font-family: Menlo, Monaco, Consolas, 'Courier New', monospace; line-height: 1.15; font-size: 1.25rem; background: transparent; border: 0;">
- /\_/\ 
-( o.o )  Meow! Page not found.
- > ^ <
-        </pre>
-        <p class="lead text-muted">This page wandered off chasing a laser pointer.</p>
-        <div class="d-grid d-sm-flex justify-content-center mt-3 actions-cat">
-          <a href="{{ '/' | relative_url }}" class="btn btn-cat btn-lg">🐾 Home</a>
-          <button class="btn btn-cat btn-lg" type="button" onclick="history.back()">🐾 Back</button>
-        </div>
-        <form class="mt-4" action="https://duckduckgo.com/" method="get" onsubmit="this.q.value = 'site:' + ( '{{ site.url | default: site.github.url }}'.replace(/^https?:\/\//,'') ) + ' ' + this.q.value;">
-          <div class="mx-auto" style="max-width: 560px;">
-            <div class="input-group input-group-lg">
-              <input type="text" name="q" class="form-control cat-rounded" placeholder="Search this site" aria-label="Search this site">
-              <button class="btn btn-cat" type="submit">🐾 Search</button>
+      <div class="col-42 col-lg-41 col-xl-40">
+        <div class="notfound-card text-center">
+          <div class="notfound-inner">
+            <div class="pill mb-3">Meow, something's missing</div>
+            <div class="hero-404 font-weight-bold">404</div>
+            <div class="cat-illustration" aria-hidden="true">
+              /\_/\<br>
+             ( o.o )<br>
+              &gt; ^ &lt;
             </div>
+            <h1 class="h2 mb-3">This page wandered off</h1>
+            <p class="subtitle mb-4">The page you are looking for may have been moved, deleted, or the URL may be incorrect. Head back home or search the site.</p>
+
+            <div class="d-flex flex-column flex-sm-row justify-content-center align-items-stretch align-items-sm-center flex-wrap" style="gap: .9rem;">
+              <a href="{{ '/' | relative_url }}" class="btn btn-cat btn-lg">Go home</a>
+              <button class="btn btn-cat btn-cat-secondary btn-lg" type="button" onclick="history.back()">Go back</button>
+            </div>
+
+            <form class="search-box mt-4" action="https://duckduckgo.com/" method="get" onsubmit="this.q.value = 'site:' + document.location.host + ' ' + this.q.value;">
+              <label class="sr-only" for="cat-search">Search this site</label>
+              <div class="input-group input-group-lg">
+                <input id="cat-search" type="text" name="q" class="form-control" placeholder="Search this site" aria-label="Search this site">
+                <div class="input-group-append">
+                  <button class="btn btn-cat" type="submit">Search</button>
+                </div>
+              </div>
+            </form>
+
           </div>
-        </form>
-        <p class="mt-3 small text-muted">Or try again later.</p>
+        </div>
       </div>
     </div>
   </div>
