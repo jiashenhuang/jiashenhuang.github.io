@@ -203,7 +203,7 @@ ol:last-child {
 }
 
 .hero-media {
-    flex: 0 0 170px;
+    flex: 0 0 210px;
     margin-top: 7.1rem;
     margin-left: 0;
 }
@@ -295,7 +295,7 @@ ol:last-child {
     border-radius: var(--radius-md);
     background: transparent;
     border: none;
-    max-width: 170px;
+    max-width: 210px;
     margin: 0;
 }
 
@@ -739,6 +739,34 @@ ol:last-child {
     object-fit: cover;
 }
 
+.showcase-photo-card {
+    padding: 0;
+}
+
+.showcase-photo-frame {
+    position: relative;
+}
+
+.showcase-photo-frame img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.showcase-photo-caption {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.8rem 0.9rem;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(17, 29, 39, 0.08), rgba(17, 29, 39, 0.55));
+}
+
+.showcase-photo-caption .card-text {
+    color: #fff;
+}
+
 .carousel-inner,
 .carousel-item,
 .carousel-item .lazy {
@@ -850,7 +878,7 @@ div.lazy {
     }
 
     .hero-portrait-panel {
-        max-width: 190px;
+        max-width: 210px;
         margin: 0;
     }
 
@@ -934,7 +962,7 @@ div.lazy {
     }
 
     .hero-portrait-panel {
-        max-width: 150px;
+        max-width: 170px;
         margin-left: 0;
     }
 
