@@ -3,8 +3,8 @@ secondary_name: "黄嘉申"
 navbar_name: "Jiashen (Jessiya) Huang"
 
 positions:
-# - logo: /assets/images/badges/NTU_Logo.png  # Logo is optional
-#   name: Research Assistant at Nanyang Technological University (NTU)
+- logo: /assets/images/badges/USC_Logo.png  # Logo is optional
+  name: Research Assistant at University of Southern California
 - logo: /assets/images/badges/WHU_Logo.png
   name: M.A. in Journalism and Communication, Wuhan University
 
@@ -26,18 +26,28 @@ orcid: 0009-0003-9489-4016
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I am a communication researcher.
-    My research focuses on <em>AI trust</em> and <em>psychological communication</em>, 
-    exploring how emerging technologies influence human behavior and trust in media at the intersection of communication, sociology, and psychology. 
+    I am currently a Research Assistant with the <a href="https://annenberg.usc.edu/">USC Annenberg School for Communication and Journalism</a>. 
+    My research focuses on <em>AI trust</em>, <em>psychological communication</em>, and <em>human–AI interaction</em>, 
+    examining how emerging technologies shape human behavior, media trust, and technology-mediated communication.
   </p>
-  <p> 
-    I hold both a Bachelor’s and a Master of Arts degree from the <a href="https://journal.whu.edu.cn/">School of Journalism and Communication</a> at <a href="https://en.whu.edu.cn/">Wuhan University</a>. 
-    Previously, I have worked as a remote Research Assistant at <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a> and <a href="https://www.ntu.edu.sg/">Nanyang Technological University</a>.
-    My professional experiences at <a href="https://www.cctv.com/gyys/">China Media Group</a>, 
-    <a href="https://www.meituan.com/en-US/about-us">Meituan</a>, 
-    and <a href="https://en.bluefocus.com/">Blue Focus Digital</a> have provided practical skills in research and data analysis. 
-    I am seeking Ph.D. opportunities to advance research on <em>AI-driven communication</em> and its societal impact, 
-    and I welcome collaboration and discussion in this field. 
+
+  <p>
+    I hold both a Bachelor’s degree and a Master of Arts degree from the 
+    <a href="https://journal.whu.edu.cn/">School of Journalism and Communication</a> at 
+    <a href="https://en.whu.edu.cn/">Wuhan University</a>. 
+    Previously, I worked as a remote Research Assistant at 
+    <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a> and 
+    <a href="https://www.ntu.edu.sg/">Nanyang Technological University</a>. 
+    My professional experiences at 
+    <a href="https://www.cctv.com/gyys/">China Media Group</a>, 
+    <a href="https://www.meituan.com/en-US/about-us">Meituan</a>, and 
+    <a href="https://en.bluefocus.com/">Blue Focus Digital</a> have strengthened my skills in research, data analysis, and digital communication.
+  </p>
+
+  <p>
+    I am currently seeking Ph.D. opportunities to advance research on <em>AI-driven communication</em>, 
+    <em>online safety</em>, and the societal implications of emerging technologies. 
+    I welcome opportunities for collaboration and scholarly discussion in these areas.
   </p>
 
 portrait_url: /assets/images/photos/portrait.jpg
@@ -59,6 +69,12 @@ education:
   date: Sep 2019 - Jul 2023
 
 experience:
+- name: University of Southern California
+  logo: /assets/images/badges/USC_Logo.png
+  position: >-
+    Research Assistant <br/>
+    Annenberg School for Communication and Journalism
+  date: Jul 2026 - present
 - name: Tsinghua University
   logo: /assets/images/badges/THU_Logo.png
   position: >-
