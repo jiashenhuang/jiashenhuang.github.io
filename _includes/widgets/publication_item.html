@@ -1,10 +1,10 @@
 {% assign item = include.item %}
-<article class="publication-item {% unless include.hide_bottom_border %}publication-item-bordered{% endunless %}">
+<article class="publication-item{% if include.compact %} publication-item-compact{% endif %} {% unless include.hide_bottom_border %}publication-item-bordered{% endunless %}">
     <div class="publication-cover">
         {%- if item.cover -%}
-        <img data-src="{{ item.cover | relative_url }}" alt="{{ item.title }}" class="lazy w-100 publication-cover-image" src="{{ '/assets/images/empty_300x200.png' | relative_url }}">
+        <img src="{{ item.cover | relative_url }}" alt="Cover image for {{ item.title | strip_html }}" class="w-100 publication-cover-image" loading="lazy" decoding="async">
         {%- else -%}
-        <svg class="bubble-visual-hash lazy w-100 publication-cover-image" data-bubble-visual-hash="{{ item.id }}" viewBox="0 0 300 200"></svg>
+        <div class="publication-cover-placeholder" aria-hidden="true"></div>
         {%- endif -%}
     </div>
 
@@ -23,9 +23,9 @@
         <div class="abstract-links">
             {% for link in item.links %}
             {% if link[1].url %}
-            <a target="{{ link[1]['target'] }}" href="{{ link[1]['url'] }}">{{ link[0] }}</a>
+            <a target="{{ link[1]['target'] }}"{% if link[1]['target'] == '_blank' %} rel="noopener noreferrer"{% endif %} href="{{ link[1]['url'] }}">{{ link[0] }}</a>
             {% else %}
-            <a target="_blank" href="{{ link[1] }}">{{ link[0] }}</a>
+            <a target="_blank" rel="noopener noreferrer" href="{{ link[1] }}">{{ link[0] }}</a>
             {% endif %}
             {% endfor %}
         </div>

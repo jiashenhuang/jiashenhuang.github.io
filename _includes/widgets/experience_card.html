@@ -11,7 +11,7 @@
                         {% for item in site.data.profile.education %}
                         <li class="detail-item">
                             <div class="detail-item-logo">
-                                <img src="{{ item.logo | relative_url }}" alt="{{ item.name }}">
+                                <img src="{{ item.logo | relative_url }}" alt="{{ item.name }}" loading="lazy" decoding="async">
                             </div>
                             <div class="detail-item-body">
                                 <div class="detail-item-header">
@@ -60,7 +60,7 @@
                         {% for item in site.data.profile.experience %}
                         <li class="detail-item compact">
                             <div class="detail-item-logo">
-                                <img src="{{ item.logo | relative_url }}" alt="{{ item.name }}">
+                                <img src="{{ item.logo | relative_url }}" alt="{{ item.name }}" loading="lazy" decoding="async">
                             </div>
                             <div class="detail-item-body">
                                 <div class="detail-item-header">

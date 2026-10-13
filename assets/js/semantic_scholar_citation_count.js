@@ -1,68 +1,95 @@
-const citationCountElements = document.querySelectorAll('[data-semantic-scholar-id]');
-citationCountElements.forEach(element => {
-    const id = element.getAttribute('data-semantic-scholar-id');
-    if (id) {
-        element.setAttribute('data-semantic-scholar-id', id.toLowerCase());
-    }
-});
+(() => {
+    const elements = Array.from(document.querySelectorAll('[data-semantic-scholar-id]'));
+    const ids = [...new Set(elements.map((element) => element.dataset.semanticScholarId?.toLowerCase()).filter(Boolean))];
+    if (!ids.length) return;
 
-const semanticScholarIds = new Set(Array.from(citationCountElements).map(element => element.getAttribute('data-semantic-scholar-id')).filter(id => id));
+    const cacheMaxAge = 7 * 24 * 60 * 60 * 1000;
+    const cacheKey = (id) => `semanticScholarCitationCount:${id}`;
 
-let uncachedSemanticScholarIds = [];
-semanticScholarIds.forEach(id => {
-    const cacheKey = `semanticScholarCitationCount:${id}`;
-    const cachedData = localStorage.getItem(cacheKey);
-    if (cachedData) {
-        const { _, timestamp } = JSON.parse(cachedData);
-        // If cached data is older than 1 hour, consider it uncached
-        if (Date.now() - timestamp > 1 * 60 * 60 * 1000) {
-            uncachedSemanticScholarIds.push(id);
+    const readCache = (id) => {
+        try {
+            const cached = JSON.parse(localStorage.getItem(cacheKey(id)));
+            return cached && Number.isFinite(cached.citationCount) ? cached : null;
+        } catch (_) {
+            return null;
         }
-    } else {
-        uncachedSemanticScholarIds.push(id);
-    }
-});
+    };
 
-let showSemanticScholarCitationCount = () => {
-    // Update the DOM with the cached citation counts
-    semanticScholarIds.forEach(id => {
-        const cacheKey = `semanticScholarCitationCount:${id}`;
-        const cachedData = localStorage.getItem(cacheKey);
-        if (cachedData) {
-            const { citationCount } = JSON.parse(cachedData);
-            const elements = document.querySelectorAll(`[data-semantic-scholar-id="${id}"]`);
-            elements.forEach(element => {
-                element.innerHTML = `<a class="badge badge-pill badge-publication badge-info" href="https://www.semanticscholar.org/paper/${id}" target="_blank"><i class="ai ai-semantic-scholar"></i> ${parseInt(citationCount).toLocaleString()} citations</a>`;
-            });
-        }
-    });
-};
-
-if (uncachedSemanticScholarIds.length > 0) {
-    fetch('https://api.semanticscholar.org/graph/v1/paper/batch?fields=citationCount', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            ids: Array.from(semanticScholarIds)
-        })
-    }).then(response => {
-        return response.json();
-    }).then(data => {
-        data.forEach(paper => {
-            console.log(paper);
-            // Cache citation count data
-            const cacheKey = `semanticScholarCitationCount:${paper.paperId}`;
-            const cacheData = {
+    const writeCache = (paper) => {
+        try {
+            localStorage.setItem(cacheKey(paper.paperId.toLowerCase()), JSON.stringify({
                 citationCount: paper.citationCount,
                 timestamp: Date.now()
-            };
-            localStorage.setItem(cacheKey, JSON.stringify(cacheData));
-        });
-    }).catch(error => {
-        console.error('Error fetching Semantic Scholar data:', error);
-    }).finally(showSemanticScholarCitationCount);
-} else {
-    showSemanticScholarCitationCount();
-}
+            }));
+        } catch (_) {
+            // Citation counts are optional; storage restrictions should not affect the page.
+        }
+    };
+
+    const renderCount = (id, citationCount) => {
+        elements
+            .filter((element) => element.dataset.semanticScholarId?.toLowerCase() === id)
+            .forEach((element) => {
+                const link = document.createElement('a');
+                link.className = 'citation-link';
+                link.href = `https://www.semanticscholar.org/paper/${id}`;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.setAttribute(
+                    'aria-label',
+                    `Cited by ${citationCount.toLocaleString()} ${citationCount === 1 ? 'paper' : 'papers'} on Semantic Scholar`
+                );
+
+                const label = document.createElement('span');
+                label.className = 'citation-label';
+                label.textContent = 'Cited by';
+
+                const count = document.createElement('span');
+                count.className = 'citation-count';
+                count.textContent = citationCount.toLocaleString();
+
+                link.append(label, count);
+                element.replaceChildren(link);
+            });
+    };
+
+    const staleIds = [];
+    ids.forEach((id) => {
+        const cached = readCache(id);
+        if (cached) renderCount(id, cached.citationCount);
+        if (!cached || Date.now() - cached.timestamp > cacheMaxAge) staleIds.push(id);
+    });
+
+    if (!staleIds.length) return;
+
+    const fetchCounts = async () => {
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), 8000);
+
+        try {
+            const response = await fetch('https://api.semanticscholar.org/graph/v1/paper/batch?fields=citationCount', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ids: staleIds }),
+                signal: controller.signal
+            });
+            if (!response.ok) return;
+
+            const papers = await response.json();
+            papers.filter(Boolean).forEach((paper) => {
+                writeCache(paper);
+                renderCount(paper.paperId.toLowerCase(), paper.citationCount);
+            });
+        } catch (_) {
+            // The page remains complete when the optional API is unavailable.
+        } finally {
+            window.clearTimeout(timeout);
+        }
+    };
+
+    if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(fetchCounts, { timeout: 2500 });
+    } else {
+        window.setTimeout(fetchCounts, 500);
+    }
+})();

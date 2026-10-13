@@ -2,6 +2,7 @@
 layout: default
 title : Homepage
 navbar_title: Home
+publication_assets: true
 ---
 <div class="page-stack">
     {% include widgets/profile_card.html %}
@@ -22,6 +23,8 @@ navbar_title: Home
         {% 
             include widgets/publication_card.html 
             publications=pubs
+            limit=site.data.display.homepage.num_selected_publications
+            compact=true
             title='<span class="section-title-text">Selected Publications</span>'
         %}
     {% endif %}

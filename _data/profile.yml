@@ -5,8 +5,6 @@ navbar_name: "Jiashen (Jessiya) Huang"
 positions:
 - logo: /assets/images/badges/USC_Logo.png  # Logo is optional
   name: Research Assistant at University of Southern California
-- logo: /assets/images/badges/WHU_Logo.png
-  name: M.A. in Journalism and Communication, Wuhan University
 
 
 email: "jiashenhuang@whu.edu.cn"
@@ -26,31 +24,36 @@ orcid: 0009-0003-9489-4016
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I am currently a Research Assistant with the <a href="https://annenberg.usc.edu/">USC Annenberg School for Communication and Journalism</a>. 
-    My research focuses on <em>AI trust</em>, <em>psychological communication</em>, and <em>human–AI interaction</em>, 
-    examining how emerging technologies shape human behavior, media trust, and technology-mediated communication.
+    I am currently a Research Assistant with the
+    <a href="https://annenberg.usc.edu/">USC Annenberg School for Communication and Journalism</a>, working with
+    <a href="https://angelhwang.github.io/">Prof. Angel Hsing-Chi Hwang</a>.
   </p>
 
   <p>
-    I hold both a Bachelor’s degree and a Master of Arts degree from the 
-    <a href="https://journal.whu.edu.cn/">School of Journalism and Communication</a> at 
-    <a href="https://en.whu.edu.cn/">Wuhan University</a>. 
-    Previously, I worked as a remote Research Assistant at 
-    <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a> and 
-    <a href="https://www.ntu.edu.sg/">Nanyang Technological University</a>. 
-    My professional experiences at 
-    <a href="https://www.cctv.com/gyys/">China Media Group</a>, 
-    <a href="https://www.meituan.com/en-US/about-us">Meituan</a>, and 
-    <a href="https://en.bluefocus.com/">Blue Focus Digital</a> have strengthened my skills in research, data analysis, and digital communication.
+    My research examines how people understand, trust, and engage with AI and other emerging technologies
+    across communication, service, and tourism contexts. Drawing on psychological and communication perspectives,
+    I am particularly interested in <em>human–AI interaction</em>, <em>AI trust</em>,
+    <em>technology-mediated experiences</em>, and <em>online safety</em>.
   </p>
 
   <p>
-    I am currently seeking Ph.D. opportunities to advance research on <em>AI-driven communication</em>, 
-    <em>online safety</em>, and the societal implications of emerging technologies. 
+    I hold a Bachelor’s degree and a Master of Arts degree from the
+    <a href="https://journal.whu.edu.cn/">School of Journalism and Communication</a> at
+    <a href="https://en.whu.edu.cn/">Wuhan University</a>.
+    Previously, I worked as a remote Research Assistant with
+    <a href="https://www.tsjc.tsinghua.edu.cn/info/1032/2051.htm">Prof. Yang Shen</a> at
+    <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a>, and with
+    <a href="https://renwenzhang.com/">Prof. Renwen Zhang</a> at
+    <a href="https://www.ntu.edu.sg/">Nanyang Technological University</a>.
+    My professional experience at
+    <a href="https://www.cctv.com/gyys/">China Media Group</a>,
+    <a href="https://www.meituan.com/en-US/about-us">Meituan</a>, and
+    <a href="https://en.bluefocus.com/">Blue Focus Digital</a> has also strengthened my skills in research,
+    data analysis, and digital communication.
     I welcome opportunities for collaboration and scholarly discussion in these areas.
   </p>
 
-portrait_url: /assets/images/photos/portrait.png
+portrait_url: /assets/images/photos/portrait-thumb.jpg
 # portrait_caption: >-
 #   Photo by Manja Vitolic on Unsplash (this caption is optional, comment it out to disable).
 

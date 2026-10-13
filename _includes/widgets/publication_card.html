@@ -10,7 +10,7 @@
             </div>
             <div class="publication-list">
                 {% for item in publications limit:include.limit %}
-                    {% include widgets/publication_item.html item=item first=forloop.first last=forloop.last hide_bottom_border=forloop.last %}
+                    {% include widgets/publication_item.html item=item first=forloop.first last=forloop.last hide_bottom_border=forloop.last compact=include.compact %}
                 {% endfor %}
             </div>
         </div>

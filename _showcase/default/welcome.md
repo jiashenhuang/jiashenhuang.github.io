@@ -2,11 +2,13 @@
 show: true
 width: 9
 date: 2099-12-12 00:01:00 +0800
+group: Intro
+class: showcase-intro-card
 ---
 
-<div class="p-4">
-    <h2>Welcome to Showcase!</h2>
-    <hr />
+<div class="showcase-intro-copy">
+    <p class="showcase-intro-eyebrow">Beyond research</p>
+    <h2>Welcome to my showcase.</h2>
     <p>
         Hello, and welcome to my showcase! Beyond my academic and professional life, I find joy in traveling, films, and music. I’ve been studying traditional Chinese ethnic singing for years — a gentle way of staying in touch with my heritage. Over the years, I’ve had the chance to explore wonderful places like the United States, Japan, South Korea, Taiwan, Hong Kong, and the Philippines, each leaving me with unique memories and inspirations.
     </p>
