@@ -15,10 +15,11 @@
         }
     };
 
-    const writeCache = (paper) => {
+    const writeCache = (id, paper) => {
         try {
-            localStorage.setItem(cacheKey(paper.paperId.toLowerCase()), JSON.stringify({
+            localStorage.setItem(cacheKey(id), JSON.stringify({
                 citationCount: paper.citationCount,
+                paperId: paper.paperId,
                 timestamp: Date.now()
             }));
         } catch (_) {
@@ -26,13 +27,13 @@
         }
     };
 
-    const renderCount = (id, citationCount) => {
+    const renderCount = (id, citationCount, paperId = id) => {
         elements
             .filter((element) => element.dataset.semanticScholarId?.toLowerCase() === id)
             .forEach((element) => {
                 const link = document.createElement('a');
                 link.className = 'citation-link';
-                link.href = `https://www.semanticscholar.org/paper/${id}`;
+                link.href = `https://www.semanticscholar.org/paper/${paperId}`;
                 link.target = '_blank';
                 link.rel = 'noopener noreferrer';
                 link.setAttribute(
@@ -56,7 +57,7 @@
     const staleIds = [];
     ids.forEach((id) => {
         const cached = readCache(id);
-        if (cached) renderCount(id, cached.citationCount);
+        if (cached) renderCount(id, cached.citationCount, cached.paperId || id);
         if (!cached || Date.now() - cached.timestamp > cacheMaxAge) staleIds.push(id);
     });
 
@@ -67,7 +68,7 @@
         const timeout = window.setTimeout(() => controller.abort(), 8000);
 
         try {
-            const response = await fetch('https://api.semanticscholar.org/graph/v1/paper/batch?fields=citationCount', {
+            const response = await fetch('https://api.semanticscholar.org/graph/v1/paper/batch?fields=paperId,citationCount,externalIds', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ids: staleIds }),
@@ -77,8 +78,13 @@
 
             const papers = await response.json();
             papers.filter(Boolean).forEach((paper) => {
-                writeCache(paper);
-                renderCount(paper.paperId.toLowerCase(), paper.citationCount);
+                const paperId = paper.paperId?.toLowerCase();
+                const doiId = paper.externalIds?.DOI ? `doi:${paper.externalIds.DOI}`.toLowerCase() : null;
+                const requestedId = staleIds.find((id) => id === paperId || id === doiId);
+                if (!requestedId) return;
+
+                writeCache(requestedId, paper);
+                renderCount(requestedId, paper.citationCount, paper.paperId);
             });
         } catch (_) {
             // The page remains complete when the optional API is unavailable.
